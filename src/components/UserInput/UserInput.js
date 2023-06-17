@@ -1,8 +1,12 @@
 import React from "react";
 
 const UserInput = () => {
+    const submitHandler = (event) => {
+        event.preventDefault();
+    };
+
   return (
-    <form className="form">
+    <form onSubmit={submitHandler} className="form">
       <div className="input-group">
         <p>
           <label htmlFor="current-savings">Current Savings ($)</label>
