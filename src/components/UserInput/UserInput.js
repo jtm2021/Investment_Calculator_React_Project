@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
+
+const initialUserInput = {
+  'current-savings': 10000,
+  'yearly-contribution': 1200,
+  'expected-return': 5,
+  duration: 10,
+};
 
 const UserInput = () => {
+  const [ UserInput, setUserInput ] = useState(initialUserInput);
+
   const submitHandler = (event) => {
     event.preventDefault();
   };
 
   const resetButton = (event) => {
-    event.preventDefault();
+    setUserInput(initialUserInput);
   };
 
-  const inputChangeHandler = (input, value) => {};
+  const inputChangeHandler = (input, value) => {
+    setUserInput((prevState) => {
+      return { ...prevState, [input]: value };
+    });
+  };
 
   return (
     <form onSubmit={submitHandler} className="form">
@@ -20,6 +33,7 @@ const UserInput = () => {
             onChange={(event) =>
               inputChangeHandler("current-savings", event.target.value)
             }
+            value={UserInput["current-savings"]}
             type="number"
             id="current-savings"
           />
@@ -30,6 +44,7 @@ const UserInput = () => {
             onChange={(event) =>
               inputChangeHandler("yearly-contribution", event.target.value)
             }
+            value={UserInput["yearly-contribution"]}
             type="number"
             id="yearly-contribution"
           />
@@ -44,6 +59,7 @@ const UserInput = () => {
             onChange={(event) =>
               inputChangeHandler("expected-return", event.target.value)
             }
+            value={UserInput["expected-return"]}
             type="number"
             id="expected-return"
           />
@@ -54,6 +70,7 @@ const UserInput = () => {
             onChange={(event) =>
               inputChangeHandler("duration", event.target.value)
             }
+            value={UserInput["duration"]}
             type="number"
             id="duration"
           />
