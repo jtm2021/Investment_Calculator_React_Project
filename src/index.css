@@ -109,7 +109,8 @@ button:hover {
 
 .result thead {
   font-size: 0.7rem;
-  color: #83e6c0;
+  /* color: #83e6c0; */
+  color: limegreen;
 }
 
 .result tbody {
