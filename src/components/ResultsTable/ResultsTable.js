@@ -21,19 +21,19 @@ const ResultsTable = (props) => {
         </tr>
       </thead>
       <tbody>
-        {props.data.map((yearlyData) => {
-          <tr key={yearlyData.year}>
-            <td>{yearlyData.year}</td>
-            <td>{formatter.format(yearlyData.savingsEndOfYear)}</td>
-            <td>{formatter.format(yearlyData.yearlyInterest)}</td>
+        {props.data.map((yearData) => (
+          <tr key={yearData.year}>
+            <td>{yearData.year}</td>
+            <td>{formatter.format(yearData.savingsEndOfYear)}</td>
+            <td>{formatter.format(yearData.yearlyInterest)}</td>
             <td>
-              {formatter.format(yearlyData.savingsEndOfYear -
+              {formatter.format(yearData.savingsEndOfYear -
                 props.initialInvestment -
-                yearlyData.yearlyContribution * yearlyData.year)}
+                yearData.yearlyContribution * yearData.year)}
             </td>
-            <td>{formatter.format(props.initialInvestment + yearlyData.yearlyContribution * yearlyData.year)}</td>
-          </tr>;
-        })}
+            <td>{formatter.format(props.initialInvestment + yearData.yearlyContribution * yearData.year)}</td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
