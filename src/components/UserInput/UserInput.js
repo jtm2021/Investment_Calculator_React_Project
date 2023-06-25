@@ -7,11 +7,13 @@ const initialUserInput = {
   duration: 10,
 };
 
-const UserInput = () => {
-  const [ UserInput, setUserInput ] = useState(initialUserInput);
+const UserInput = props => {
+  const [ userInput, setUserInput ] = useState(initialUserInput);
 
   const submitHandler = (event) => {
     event.preventDefault();
+
+    props.onCalculate(userInput);
   };
 
   const resetButton = (event) => {
@@ -33,7 +35,7 @@ const UserInput = () => {
             onChange={(event) =>
               inputChangeHandler("current-savings", event.target.value)
             }
-            value={UserInput["current-savings"]}
+            value={userInput["current-savings"]}
             type="number"
             id="current-savings"
           />
@@ -44,7 +46,7 @@ const UserInput = () => {
             onChange={(event) =>
               inputChangeHandler("yearly-contribution", event.target.value)
             }
-            value={UserInput["yearly-contribution"]}
+            value={userInput["yearly-contribution"]}
             type="number"
             id="yearly-contribution"
           />
@@ -59,7 +61,7 @@ const UserInput = () => {
             onChange={(event) =>
               inputChangeHandler("expected-return", event.target.value)
             }
-            value={UserInput["expected-return"]}
+            value={userInput["expected-return"]}
             type="number"
             id="expected-return"
           />
@@ -70,7 +72,7 @@ const UserInput = () => {
             onChange={(event) =>
               inputChangeHandler("duration", event.target.value)
             }
-            value={UserInput["duration"]}
+            value={userInput["duration"]}
             type="number"
             id="duration"
           />
