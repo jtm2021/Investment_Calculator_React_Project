@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import logo from "./assets/investment-calculator-logo.png";
 import Header from "./components/Header/Header";
 import UserInput from "./components/UserInput/UserInput";
@@ -36,7 +36,7 @@ function App() {
   }
 
   return (
-    <div>
+    <React.Fragment>
       <Header />
       <UserInput onCalculate={calculateHandler} />
 
@@ -45,7 +45,7 @@ function App() {
 
       {!userInput && <p style={{textAlign: 'center'}}>No data available yet.</p>}
       {userInput && <ResultsTable data={yearlyData} initialInvestment={userInput['current-savings']}/>}      
-    </div>
+    </React.Fragment>
   );
 }
 
